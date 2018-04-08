@@ -6,7 +6,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var ConfigPath string
+var Template string
 
 var EventGen = &cobra.Command{
 	Use: "eventgen",
@@ -26,8 +26,9 @@ func Execute() {
 
 func addCommands() {
 	EventGen.AddCommand(versionCmd)
+	EventGen.AddCommand(webCmd)
 }
 
 func init() {
-	EventGen.PersistentFlags().StringVarP(&ConfigPath, "configPath", "c", "config.yaml", "the path to the app config file")
+	EventGen.PersistentFlags().StringVarP(&Template, "template", "t", "", "Log template to use")
 }

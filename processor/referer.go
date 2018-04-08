@@ -1,0 +1,27 @@
+package processor
+
+import (
+	"math/rand"
+	"strings"
+	"time"
+
+	"github.com/icrowley/fake"
+)
+
+type RefererProcessor struct{}
+
+var refererKey = "%Referer%"
+
+func (p RefererProcessor) process(template string) string {
+	if strings.Contains(template, refererKey) {
+		referer := getRandomReferer()
+		return strings.Replace(template, refererKey, referer, -1)
+	}
+	return template
+}
+
+func getRandomReferer() string {
+	referers := []string{"-", "-", "http://" + fake.DomainName(), "-", "-", "-"}
+	r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	return referers[r.Intn(len(referers))]
+}
