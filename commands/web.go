@@ -3,6 +3,7 @@ package commands
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 
 	"github.com/spf13/cobra"
 	"github.com/yeoji/eventgen/config"
@@ -22,7 +23,10 @@ var webCmd = &cobra.Command{
 }
 
 func generateWebEvents() {
-	data, _ := ioutil.ReadFile(webTemplateDir + "/" + Template)
+	data, err := ioutil.ReadFile(webTemplateDir + "/" + Template)
+	if err != nil {
+		log.Fatal("Error reading template file: ", err.Error())
+	}
 	template := string(data)
 
 	var i int

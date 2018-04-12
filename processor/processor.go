@@ -21,6 +21,7 @@ func RegisterProcessors() {
 	processors[urlKey] = urlProcessor{}
 	processors[userAgentKey] = userAgentProcessor{}
 	processors[userIdKey] = userIdProcessor{}
+	processors[lookupKey] = lookupProcessor{}
 }
 
 func ProcessTemplate(template string) string {
