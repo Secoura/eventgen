@@ -5,6 +5,7 @@ import (
 	"io/ioutil"
 
 	"github.com/spf13/cobra"
+	"github.com/yeoji/eventgen/config"
 	"github.com/yeoji/eventgen/processor"
 )
 
@@ -26,7 +27,7 @@ func generateWebEvents() {
 
 	var i int
 	var result string
-	for i = 0; i < 1000; i++ {
+	for i = 0; i < config.GetConfig().NoOfEvents; i++ {
 		result = processor.ProcessTemplate(template)
 		fmt.Println(result)
 	}

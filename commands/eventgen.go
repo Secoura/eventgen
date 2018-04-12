@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+	"github.com/yeoji/eventgen/config"
 	"github.com/yeoji/eventgen/processor"
 )
 
@@ -31,6 +32,7 @@ func addCommands() {
 }
 
 func init() {
+	cobra.OnInitialize(config.LoadConfig)
 	EventGen.PersistentFlags().StringVarP(&Template, "template", "t", "", "Log template to use")
 	processor.RegisterProcessors()
 }
