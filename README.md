@@ -1,6 +1,6 @@
-# EventGen
+# Eventgen
 
-This is an event generator for S that can generate logs using a template.
+This is an event generator for generating logs using a template.
 
 ### How Do I Use It?
 
