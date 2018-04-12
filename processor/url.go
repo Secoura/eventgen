@@ -6,11 +6,11 @@ import (
 	"github.com/icrowley/fake"
 )
 
-type UrlProcessor struct{}
+type urlProcessor struct{}
 
 var urlKey = "%Url%"
 
-func (p UrlProcessor) process(template string) string {
+func (p urlProcessor) process(template string) string {
 	if strings.Contains(template, urlKey) {
 		// TODO fix this later
 		fakeResource := strings.Join(strings.Split(fake.Product(), " "), "-")

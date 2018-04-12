@@ -6,11 +6,11 @@ import (
 	"github.com/icrowley/fake"
 )
 
-type HostNameProcessor struct{}
+type hostNameProcessor struct{}
 
 var hostNameKey = "%HostName%"
 
-func (p HostNameProcessor) process(template string) string {
+func (p hostNameProcessor) process(template string) string {
 	if strings.Contains(template, hostNameKey) {
 		return strings.Replace(template, hostNameKey, fake.IPv4(), -1)
 	}

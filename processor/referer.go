@@ -8,11 +8,11 @@ import (
 	"github.com/icrowley/fake"
 )
 
-type RefererProcessor struct{}
+type refererProcessor struct{}
 
 var refererKey = "%Referer%"
 
-func (p RefererProcessor) process(template string) string {
+func (p refererProcessor) process(template string) string {
 	if strings.Contains(template, refererKey) {
 		referer := getRandomReferer()
 		return strings.Replace(template, refererKey, referer, -1)

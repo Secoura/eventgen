@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+	"github.com/yeoji/eventgen/processor"
 )
 
 var Template string
@@ -31,4 +32,5 @@ func addCommands() {
 
 func init() {
 	EventGen.PersistentFlags().StringVarP(&Template, "template", "t", "", "Log template to use")
+	processor.RegisterProcessors()
 }

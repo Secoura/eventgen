@@ -6,11 +6,11 @@ import (
 	"time"
 )
 
-type HttpMethodProcessor struct{}
+type httpMethodProcessor struct{}
 
 var httpMethodKey = "%HttpMethod%"
 
-func (p HttpMethodProcessor) process(template string) string {
+func (p httpMethodProcessor) process(template string) string {
 	if strings.Contains(template, httpMethodKey) {
 		method := getRandomHttpMethod()
 		return strings.Replace(template, httpMethodKey, method, -1)

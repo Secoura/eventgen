@@ -7,12 +7,14 @@ import (
 	"time"
 )
 
-type TimestampProcessor struct{}
+type timestampProcessor struct{}
 
-var timestampKey = "%Timestamp:(.+)%"
+var timestampKey = "%Timestamp:"
 
-func (p TimestampProcessor) process(template string) string {
-	regex, _ := regexp.Compile(timestampKey)
+var timestampRegex = "%Timestamp:(.+?)%"
+
+func (p timestampProcessor) process(template string) string {
+	regex, _ := regexp.Compile(timestampRegex)
 	matches := regex.FindAllStringSubmatch(template, -1)
 	if len(matches) > 0 {
 		for _, match := range matches {

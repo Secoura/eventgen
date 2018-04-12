@@ -6,11 +6,11 @@ import (
 	"time"
 )
 
-type StatusCodeProcessor struct{}
+type statusCodeProcessor struct{}
 
 var statusCodeKey = "%StatusCode%"
 
-func (p StatusCodeProcessor) process(template string) string {
+func (p statusCodeProcessor) process(template string) string {
 	if strings.Contains(template, statusCodeKey) {
 		statusCode := getRandomStatusCode()
 		return strings.Replace(template, statusCodeKey, statusCode, -1)
