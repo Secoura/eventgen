@@ -15,7 +15,7 @@ go build -o eventgen main.go
 Currently there are only 2 provided templates, `combined` and `common` log formats for web events:
 
 ```
-./eventgen web -t <template>
+./eventgen generate -t <template> -n <no of events>
 ```
 
 ### Configuration
@@ -23,6 +23,9 @@ Currently there are only 2 provided templates, `combined` and `common` log forma
 The `config.yaml` file holds all the config for EventGen.
 
 ```
+# This is the template to use to generate events
+template: web/combined
+
 # This is the start time of the events that are generated
 # It has to follow the format specified in the example below
 # If the start time is not configured, it defaults to the current time
@@ -40,7 +43,7 @@ noOfEvents: 1000
 
 ### Custom Templates
 
-You can build your own template by placing the template file under the `templates/web` directory.
+You can build your own template by placing the template file under the `templates` directory.
 
 There are only a few processors that are available as of now:
 
@@ -53,4 +56,5 @@ There are only a few processors that are available as of now:
 %Timestamp:<Format>% - A generated timestamp that will follow the provided format
 %Url% - A generated URL
 %UserAgent% - A generated user agent
+%Lookup:<File>% - Random lookup of value from a list of newline-separated text file
 ```

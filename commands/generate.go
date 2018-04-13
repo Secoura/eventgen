@@ -5,9 +5,9 @@ import (
 	"io/ioutil"
 	"log"
 
+	"github.com/Secoura/eventgen/config"
+	"github.com/Secoura/eventgen/processor"
 	"github.com/spf13/cobra"
-	"github.com/yeoji/eventgen/config"
-	"github.com/yeoji/eventgen/processor"
 )
 
 var templateDir = "templates"

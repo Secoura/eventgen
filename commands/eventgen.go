@@ -3,10 +3,10 @@ package commands
 import (
 	"os"
 
+	"github.com/Secoura/eventgen/config"
+	"github.com/Secoura/eventgen/processor"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
-	"github.com/yeoji/eventgen/config"
-	"github.com/yeoji/eventgen/processor"
 )
 
 var template string

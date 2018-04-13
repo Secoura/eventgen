@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/yeoji/eventgen/config"
+	"github.com/Secoura/eventgen/config"
 )
 
 type timestampProcessor struct{}
