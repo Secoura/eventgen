@@ -4,11 +4,13 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 	"github.com/yeoji/eventgen/config"
 	"github.com/yeoji/eventgen/processor"
 )
 
-var Template string
+var template string
+var noOfEvents int
 
 var EventGen = &cobra.Command{
 	Use: "eventgen",
@@ -28,11 +30,13 @@ func Execute() {
 
 func addCommands() {
 	EventGen.AddCommand(versionCmd)
-	EventGen.AddCommand(webCmd)
+	EventGen.AddCommand(generateCmd)
 }
 
 func init() {
 	cobra.OnInitialize(config.LoadConfig)
-	EventGen.PersistentFlags().StringVarP(&Template, "template", "t", "", "Log template to use")
+	EventGen.PersistentFlags().StringVarP(&template, "template", "t", "", "Log template to use")
+	EventGen.PersistentFlags().IntVarP(&noOfEvents, "noOfEvents", "n", 1, "Number of events to generate")
+	viper.BindPFlags(EventGen.PersistentFlags())
 	processor.RegisterProcessors()
 }

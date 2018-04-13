@@ -10,20 +10,20 @@ import (
 	"github.com/yeoji/eventgen/processor"
 )
 
-var webTemplateDir = "templates/web"
+var templateDir = "templates"
 
-var webCmd = &cobra.Command{
-	Use:   "web",
-	Short: "Generate web events",
-	Long:  "Generate web events in the provided log template",
+var generateCmd = &cobra.Command{
+	Use:   "generate",
+	Short: "Generate events",
+	Long:  "Generate events using the provided template",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		generateWebEvents()
+		generateEvents()
 		return nil
 	},
 }
 
-func generateWebEvents() {
-	data, err := ioutil.ReadFile(webTemplateDir + "/" + Template)
+func generateEvents() {
+	data, err := ioutil.ReadFile(templateDir + "/" + config.GetConfig().Template)
 	if err != nil {
 		log.Fatal("Error reading template file: ", err.Error())
 	}

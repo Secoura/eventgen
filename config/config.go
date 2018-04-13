@@ -1,34 +1,45 @@
 package config
 
 import (
+	"encoding/json"
 	"log"
-	"time"
 
 	"github.com/spf13/viper"
 )
 
-type Config struct {
-	Duration   time.Duration
-	NoOfEvents int
-	StartTime  string
-}
-
 var config Config
 
 func LoadConfig() {
-	v := viper.New()
-	v.AddConfigPath(".")
-	v.SetConfigName("config")
+	err := loadPluginConfig()
+	if err != nil {
+		log.Println("Could not read config from env variable: " + err.Error())
+		log.Println("Reading config from file...")
+		loadFileConfig()
+	}
+}
 
-	err := v.ReadInConfig()
+func loadPluginConfig() error {
+	viper.SetEnvPrefix("plugin")
+	viper.BindEnv("config")
+
+	pluginConf := viper.GetString("config")
+	config = Config{}
+	return json.Unmarshal([]byte(pluginConf), &config)
+}
+
+func loadFileConfig() {
+	viper.AddConfigPath(".")
+	viper.SetConfigName("config")
+
+	err := viper.ReadInConfig()
 	if err != nil {
 		log.Fatal("Error loading config file: " + err.Error())
 	}
-
 	config = Config{
-		Duration:   parseDuration(v.GetString("duration")),
-		NoOfEvents: v.GetInt("noOfEvents"),
-		StartTime:  v.GetString("startTime"),
+		Template:   viper.GetString("template"),
+		Duration:   parseDuration(viper.GetString("duration")),
+		NoOfEvents: viper.GetInt("noOfEvents"),
+		StartTime:  viper.GetString("startTime"),
 	}
 }
 

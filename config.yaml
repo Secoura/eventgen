@@ -1,6 +1,9 @@
+# The template file to use
+template: web/combined
+
 # Defaults to current time
 #startTime: 08/Apr/2018:15:04:05 +1000
 
 # Duration can be specified in the format of \d+d \d+h \d+m
 duration: 15m
-noOfEvents: 1000
+noOfEvents: 1
