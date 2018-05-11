@@ -3,7 +3,7 @@ package main
 import (
 	"runtime"
 
-	"github.com/Secoura/eventgen/commands"
+	"github.com/secoura/eventgen/commands"
 )
 
 func main() {

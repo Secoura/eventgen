@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/Secoura/eventgen/config"
-	"github.com/Secoura/eventgen/processor"
+	"github.com/secoura/eventgen/config"
+	"github.com/secoura/eventgen/processor"
 	"github.com/spf13/cobra"
 )
 
