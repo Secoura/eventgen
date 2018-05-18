@@ -1,16 +1,14 @@
 {
-  "id": "secoura-eventgen",
-  "name": "Discover Plugin for Secoura Eventgen",
-  "description": "Discover Plugin for Secoura Eventgen",
+  "id": "eventgen",
+  "name": "eventgen",
+  "description": "Event generator for Discover",
   "version": "0.1.0",
   "provides": [
     {
       "type": "collector",
       "name": "eventgen-collector",
-      "requires": {
-        "golang": "*"
-      },
-      "source_name": "secoura-eventgen",
+      "requires": {},
+      "source_name": "eventgen",
       "line_breaker": "\n",
       "path": "./eventgen",
       "interval": 3600000
