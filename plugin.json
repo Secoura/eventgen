@@ -10,7 +10,7 @@
       "requires": {},
       "source_name": "eventgen",
       "line_breaker": "\n",
-      "path": "./eventgen",
+      "path": "./bin/eventgen",
       "interval": 3600000
     }
   ]

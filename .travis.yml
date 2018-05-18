@@ -1,0 +1,16 @@
+language: go
+go:
+- '1.10'
+before_install:
+- curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
+- dep ensure -v
+before_deploy:
+- zip -r "eventgen-${TRAVIS_TAG}.zip" dist/*
+deploy:
+  provider: releases
+  api_key:
+    secure: hR6SnN3GQ5g0nQrbBrGM15kFJg6FwkamYyP97xN4NNjRqFMA7Uy98cy6YpC2duunX3diY9+gn7EOi8k3ZJx7CIA/TlPNB8tUAcKVkFCA8LOYolsqbavTs6zaUwo2D87VOh8xY0+RpRlZ+vVd/QyTcdvo7hpZRarkWYWwsFZYGwzwzdxy0Do15jzuyT1EJ0Yy++/wXd0eady45V2MKq2HkBSftATYX+C/iflMMDO8doSzIMjV0jRO28Hvs+CgRicBnNry5N+ca9X5Yxe9TsKtJ6YyEfpoxXzoDZzO0bFtU4vUD9jxzTn4rKw/1A0dYJvRd18/nTJXpSK1Z4uA5hN13NV8LM5BwWjhpC5y9F8ZlsHUZJh4Myj4mnoxu9M0lvAYDxfLFn1fI/KuiIMv7+K7BTTYexK+wko6MoUtgmmE/nYU/yBC2aB9PRHds41M5xsg+mS0DODLYhjBEahCyU5JUQhZbwnQMSsCYQYyQn0TIm5rrhyEYvXhk9DlUR4SaQV7EiB7/OZEqu/acv5Qzzfrn6GjaZ7Ig8Uznj6G3gUDfEjUTq3KH+AupZNVbjqPy59kGcaKP04zSBn8Ux6b+fRxMljpflZfEiMsf5fSPXxsEyd6DQMTR2Dn2eASPYX0YhsOjddpHzpxrNeyTKNJ9mm1ViZnVYX4hUTVQdxqLaGj1/8=
+  file: eventgen-*.zip
+  file_glob: true
+  on:
+    tags: true
