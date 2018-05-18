@@ -7,7 +7,10 @@
     {
       "type": "collector",
       "name": "eventgen-collector",
-      "requires": {},
+      "requires": {
+        "os": "linux",
+        "arch": "x64"
+      },
       "source_name": "eventgen",
       "line_breaker": "\n",
       "path": "./bin/eventgen",
