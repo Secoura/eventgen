@@ -33,6 +33,6 @@ func generateEvents() {
 	var result string
 	for i = 0; i < config.GetConfig().NoOfEvents; i++ {
 		result = processor.ProcessTemplate(template)
-		fmt.Printf(result)
+		fmt.Println(result)
 	}
 }
