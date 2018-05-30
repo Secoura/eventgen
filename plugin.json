@@ -2,18 +2,39 @@
   "id": "eventgen",
   "name": "eventgen",
   "description": "Event generator for Discover",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "provides": [
     {
       "type": "collector",
       "name": "eventgen-collector",
-      "requires": {
-        "os": "linux",
-        "arch": "x64"
-      },
+      "conditions": [
+        {
+          "match": {
+            "os": "linux",
+            "arch": "x64"
+          },
+          "path": "./bin/eventgen-linux-x64",
+          "args": "generate"
+        },
+        {
+          "match": {
+            "os": "macos",
+            "arch": "x64"
+          },
+          "path": "./bin/eventgen-macos-x64",
+          "args": "generate"
+        },
+        {
+          "match": {
+            "os": "windows",
+            "arch": "x64"
+          },
+          "path": "./bin/eventgen-windows-x64.exe",
+          "args": "generate"
+        }
+      ],
       "source_name": "eventgen",
       "line_breaker": "\n",
-      "path": "./bin/eventgen",
       "interval": 3600000
     }
   ]

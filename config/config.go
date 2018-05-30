@@ -5,26 +5,29 @@ import (
 	"log"
 
 	"github.com/spf13/viper"
+	"os"
 )
 
 var config Config
 
 func LoadConfig() {
-	err := loadPluginConfig()
-	if err != nil {
-		log.Println("Could not read config from env variable: " + err.Error())
-		log.Println("Reading config from file...")
+	if success := loadPluginConfig(); !success {
 		loadFileConfig()
 	}
 }
 
-func loadPluginConfig() error {
-	viper.SetEnvPrefix("plugin")
-	viper.BindEnv("config")
+func loadPluginConfig() bool {
+	pluginConf := os.Getenv("PLUGIN_CONFIG")
+	if pluginConf == "" {
+		return false
+	}
 
-	pluginConf := viper.GetString("config")
 	config = Config{}
-	return json.Unmarshal([]byte(pluginConf), &config)
+	if err := json.Unmarshal([]byte(pluginConf), &config); err != nil {
+		log.Printf("Failed to parse PLUGIN_CONFIG from environment variable: %v", err)
+		return false
+	}
+	return true
 }
 
 func loadFileConfig() {
