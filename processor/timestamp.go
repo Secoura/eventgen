@@ -18,16 +18,16 @@ var timestampRegex = "%Timestamp:(.+?)%"
 var startTimeFormat = "02/Jan/2006:15:04:05 -0700"
 
 func (p timestampProcessor) process(template string) string {
+	startTime, err := time.Parse(startTimeFormat, config.GetConfig().StartTime)
+	if err != nil {
+		startTime = time.Now()
+	}
+	duration := getRandomTimeInterval(startTime)
+
 	regex, _ := regexp.Compile(timestampRegex)
 	matches := regex.FindAllStringSubmatch(template, -1)
 	if len(matches) > 0 {
 		for _, match := range matches {
-			startTime, err := time.Parse(startTimeFormat, config.GetConfig().StartTime)
-			if err != nil {
-				startTime = time.Now()
-			}
-			duration := getRandomTimeInterval(startTime)
-
 			currentTime := startTime.Add(duration).Format(match[1])
 			template = strings.Replace(template, match[0], currentTime, -1)
 		}

@@ -9,9 +9,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-var template string
-var noOfEvents int
-
 var EventGen = &cobra.Command{
 	Use: "eventgen",
 	RunE: func(cmd *cobra.Command, args []string) error {
@@ -35,8 +32,6 @@ func addCommands() {
 
 func init() {
 	cobra.OnInitialize(config.LoadConfig)
-	EventGen.PersistentFlags().StringVarP(&template, "template", "t", "", "Log template to use")
-	EventGen.PersistentFlags().IntVarP(&noOfEvents, "noOfEvents", "n", 1, "Number of events to generate")
 	viper.BindPFlags(EventGen.PersistentFlags())
 	processor.RegisterProcessors()
 }

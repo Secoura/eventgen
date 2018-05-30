@@ -15,7 +15,7 @@ go build -o eventgen main.go
 Currently there are only 2 provided templates, `combined` and `common` log formats for web events:
 
 ```
-./eventgen generate -t <template> -n <no of events>
+./eventgen generate
 ```
 
 ### Configuration
