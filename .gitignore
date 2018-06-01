@@ -3,3 +3,5 @@
 vendor
 eventgen
 dist
+config.yaml
+.DS_Store

@@ -3,19 +3,18 @@ package config
 import (
 	"encoding/json"
 	"errors"
-	"strconv"
 	"time"
 )
 
 type Config struct {
-	Template   string        `json:"template"`
-	Duration   time.Duration `json:"duration"`
-	NoOfEvents int           `json:"noOfEvents"`
-	StartTime  string        `json:"startTime"`
+	Template       string        `json:"template"`
+	Duration       time.Duration `json:"duration"`
+	NumberOfEvents int           `json:"number_of_events"`
+	StartTime      string        `json:"start_time"`
 }
 
 func (c *Config) UnmarshalJSON(b []byte) error {
-	var conf map[string]string
+	var conf map[string]interface{}
 	if err := json.Unmarshal(b, &conf); err != nil {
 		return err
 	}
@@ -23,20 +22,30 @@ func (c *Config) UnmarshalJSON(b []byte) error {
 		return errors.New("missing required config key")
 	}
 
-	c.Template = conf["template"]
-	c.StartTime = conf["startTime"]
-	c.Duration = parseDuration(conf["duration"])
-
-	noOfEvents, err := strconv.Atoi(conf["noOfEvents"])
-	if err != nil {
-		return err
+	c.Template = conf["template"].(string)
+	if startTime, ok := conf["start_time"]; ok {
+		c.StartTime = startTime.(string)
 	}
-	c.NoOfEvents = noOfEvents
+
+	switch t := conf["duration"].(type) {
+	case string:
+		c.Duration = parseDuration(t)
+	case time.Duration:
+		c.Duration = t
+	default:
+		return errors.New("invalid 'duration' value")
+	}
+
+	noOfEvents, ok := conf["number_of_events"].(float64)
+	if !ok {
+		return errors.New("invalid 'number_of_events' value")
+	}
+	c.NumberOfEvents = int(noOfEvents)
 	return nil
 }
 
-func checkRequiredConfigKeys(conf map[string]string) bool {
-	if _, exists := conf["noOfEvents"]; !exists {
+func checkRequiredConfigKeys(conf map[string]interface{}) bool {
+	if _, exists := conf["number_of_events"]; !exists {
 		return false
 	}
 

@@ -2,8 +2,8 @@
 template: web/combined
 
 # Defaults to current time
-#startTime: 08/Apr/2018:15:04:05 +1000
+#start_time: 08/Apr/2018:15:04:05 +1000
 
 # Duration can be specified in the format of \d+d \d+h \d+m
 duration: 15m
-noOfEvents: 1
+number_of_events: 1

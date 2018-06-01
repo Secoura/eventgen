@@ -39,10 +39,10 @@ func loadFileConfig() {
 		log.Fatal("Error loading config file: " + err.Error())
 	}
 	config = Config{
-		Template:   viper.GetString("template"),
-		Duration:   parseDuration(viper.GetString("duration")),
-		NoOfEvents: viper.GetInt("noOfEvents"),
-		StartTime:  viper.GetString("startTime"),
+		Template:       viper.GetString("template"),
+		Duration:       parseDuration(viper.GetString("duration")),
+		NumberOfEvents: viper.GetInt("number_of_events"),
+		StartTime:      viper.GetString("start_time"),
 	}
 }
 
