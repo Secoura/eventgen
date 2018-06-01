@@ -40,6 +40,7 @@ func loadFileConfig() {
 	}
 	config = Config{
 		Template:       viper.GetString("template"),
+		Delimiter:      viper.GetString("delimiter"),
 		Duration:       parseDuration(viper.GetString("duration")),
 		NumberOfEvents: viper.GetInt("number_of_events"),
 		StartTime:      viper.GetString("start_time"),

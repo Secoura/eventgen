@@ -8,6 +8,7 @@ import (
 
 type Config struct {
 	Template       string        `json:"template"`
+	Delimiter      string        `json:"delimiter"`
 	Duration       time.Duration `json:"duration"`
 	NumberOfEvents int           `json:"number_of_events"`
 	StartTime      string        `json:"start_time"`
@@ -25,6 +26,9 @@ func (c *Config) UnmarshalJSON(b []byte) error {
 	c.Template = conf["template"].(string)
 	if startTime, ok := conf["start_time"]; ok {
 		c.StartTime = startTime.(string)
+	}
+	if delimiter, ok := conf["delimiter"]; ok {
+		c.Delimiter = delimiter.(string)
 	}
 
 	switch t := conf["duration"].(type) {

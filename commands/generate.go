@@ -1,7 +1,6 @@
 package commands
 
 import (
-	"fmt"
 	"io/ioutil"
 	"log"
 
@@ -9,6 +8,8 @@ import (
 	"github.com/secoura/eventgen/processor"
 	"github.com/spf13/cobra"
 	"errors"
+	"fmt"
+	"strings"
 )
 
 var templateDir = "templates"
@@ -28,13 +29,18 @@ func generateEvents() error {
 		log.Fatal("Error reading template file: ", err.Error())
 		return errors.New("failed to read template file")
 	}
-	template := string(data)
+	template := strings.TrimSpace(string(data))
+
+	delimiter := "\n"
+	if d := config.GetConfig().Delimiter; d != "" {
+		delimiter = d
+	}
 
 	var i int
 	var result string
 	for i = 0; i < config.GetConfig().NumberOfEvents; i++ {
 		result = processor.ProcessTemplate(template)
-		fmt.Println(result)
+		fmt.Printf("%s%s", result, delimiter)
 	}
 	return nil
 }

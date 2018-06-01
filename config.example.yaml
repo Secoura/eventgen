@@ -1,8 +1,10 @@
 # The template file to use
 template: web/combined
+# Defaults to new line `\n`
+# delimiter: "\n"
 
 # Defaults to current time
-#start_time: 08/Apr/2018:15:04:05 +1000
+# start_time: 08/Apr/2018:15:04:05 +1000
 
 # Duration can be specified in the format of \d+d \d+h \d+m
 duration: 15m
