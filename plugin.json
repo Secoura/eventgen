@@ -2,7 +2,7 @@
   "id": "eventgen",
   "name": "eventgen",
   "description": "Event generator for Discover",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "provides": [
     {
       "type": "collector",
