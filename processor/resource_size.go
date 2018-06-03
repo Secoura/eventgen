@@ -3,7 +3,8 @@ package processor
 import (
 	"strings"
 
-	"github.com/icrowley/fake"
+	"math/rand"
+	"strconv"
 )
 
 type resourceSizeProcessor struct{}
@@ -12,7 +13,8 @@ var resourceSizeKey = "%ResourceSize%"
 
 func (p resourceSizeProcessor) process(template string) string {
 	if strings.Contains(template, resourceSizeKey) {
-		return strings.Replace(template, resourceSizeKey, fake.Digits(), -1)
+		fakeNumber := rand.Intn(10485760) + 1
+		return strings.Replace(template, resourceSizeKey, strconv.Itoa(fakeNumber), -1)
 	}
 	return template
 }

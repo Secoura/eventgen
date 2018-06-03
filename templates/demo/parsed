@@ -6,8 +6,8 @@
   "auth": "-",
   "verb": "%HttpMethod%",
   "request": "%Url%",
-  "httpversion": "1.1",
+  "httpversion": 1.1,
   "rawrequest": null,
-  "response": "%StatusCode%",
-  "bytes": "%ResourceSize%"
+  "response": %StatusCode%,
+  "bytes": %ResourceSize%
 }
