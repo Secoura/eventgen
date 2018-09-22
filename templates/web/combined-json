@@ -1,6 +1,6 @@
 {
   "_raw": "%HostName% - %UserId% [%Timestamp:02/Jan/2006:15:04:05 -0700%] \"%HttpMethod% %Url% HTTP/1.1\" %StatusCode% %ResourceSize% \"%Referer%\" \"%UserAgent%\"",
-  "_time": "%Timestamp:2006-01-02T15:04:05Z%",
+  "_time": "%Timestamp:2006-01-02T15:04:05Z07:00%",
   "clientip": "%HostName%",
   "ident": "-",
   "auth": "-",
