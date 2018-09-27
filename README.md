@@ -2,7 +2,7 @@
 
 This is an event generator for generating logs using a template.
 
-### How Do I Use It?
+### Getting Started
 
 1. Build Eventgen
 
@@ -57,4 +57,21 @@ There are only a few processors that are available as of now:
 %Url% - A generated URL
 %UserAgent% - A generated user agent
 %Lookup:<File>% - Random lookup of value from a list of newline-separated text file
+```
+
+# Using in Secoura
+
+Add the following example configuration into the `plugins.yml` file to enable Eventgen in Secoura:
+
+```yaml
+eventgen:
+  - eventgen-collector:
+      enabled: true
+      template: web/combined-csv
+      duration: 15m
+      number_of_events: 100
+      delimiter: --DISCOVER_END_OF_EVENT--
+      overrides:
+        interval: 1000
+        line_breaker: --DISCOVER_END_OF_EVENT--
 ```
