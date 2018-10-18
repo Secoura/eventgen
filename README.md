@@ -70,8 +70,8 @@ eventgen:
       template: web/combined-csv
       duration: 15m
       number_of_events: 100
-      delimiter: --DISCOVER_END_OF_EVENT--
+      delimiter: --SECOURA_END_OF_EVENT--
       overrides:
         interval: 1000
-        line_breaker: --DISCOVER_END_OF_EVENT--
+        line_breaker: --SECOURA_END_OF_EVENT--
 ```

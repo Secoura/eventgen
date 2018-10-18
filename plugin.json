@@ -1,7 +1,7 @@
 {
   "id": "eventgen",
   "name": "eventgen",
-  "description": "Event generator for Discover",
+  "description": "Event generator for Secoura Server.",
   "version": "0.4.2",
   "provides": [
     {
