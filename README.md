@@ -12,7 +12,7 @@ go build -o eventgen main.go
 
 2. Run Eventgen
 
-Currently there are only 2 provided templates, `combined` and `common` log formats for web events:
+Currently there are only 3 provided templates, `combined`, `combined-json` and `common` log formats for web events:
 
 ```
 ./eventgen generate
