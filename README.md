@@ -29,7 +29,7 @@ template: web/combined
 # This is the start time of the events that are generated
 # It has to follow the format specified in the example below
 # If the start time is not configured, it defaults to the current time
-startTime: 08/Apr/2018:15:04:05 +1000
+start_time: 08/Apr/2018:15:04:05 +1000
 
 # This is the time duration for the events we want to generate
 # ie. If this is set to 15 minutes, the events generated will
@@ -38,7 +38,7 @@ startTime: 08/Apr/2018:15:04:05 +1000
 duration: 15m
 
 # The number of events we want to generate
-noOfEvents: 1000
+number_of_events: 1000
 ```
 
 ### Custom Templates
