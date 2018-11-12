@@ -1,13 +1,7 @@
 language: go
 
 go:
-  - '1.10'
-
-install:
-  - go get -u golang.org/x/vgo
-
-script:
-  - vgo test -v $(vgo list ./... | grep -v vendor/)
+  - '1.11'
 
 before_deploy:
   - zip -r "eventgen-${TRAVIS_TAG}.zip" dist/*

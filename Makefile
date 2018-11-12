@@ -3,13 +3,13 @@ default: binary
 binary: build
 
 build_linux_x64:
-			 GOARCH=amd64 GOOS=linux go build -o dist/bin/eventgen-linux-x64
+			 GO111MODULE=on GOARCH=amd64 GOOS=linux go build -o dist/bin/eventgen-linux-x64
 
 build_darwin_x64:
-			 GOARCH=amd64 GOOS=darwin go build -o dist/bin/eventgen-macos-x64
+			 GO111MODULE=on GOARCH=amd64 GOOS=darwin go build -o dist/bin/eventgen-macos-x64
 
 build_windows_x64:
-			 GOARCH=amd64 GOOS=windows go build -o dist/bin/eventgen-windows-x64.exe
+			 GO111MODULE=on GOARCH=amd64 GOOS=windows go build -o dist/bin/eventgen-windows-x64.exe
 
 build: dist build_linux_x64	build_darwin_x64 build_windows_x64 copy_assets
 
