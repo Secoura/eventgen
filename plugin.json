@@ -2,7 +2,7 @@
   "id": "eventgen",
   "name": "eventgen",
   "description": "Event generator for Secoura Server.",
-  "version": "0.4.2",
+  "version": "0.4.5",
   "provides": [
     {
       "type": "collector",

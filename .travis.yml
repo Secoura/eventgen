@@ -3,10 +3,6 @@ language: go
 go:
 - '1.10'
 
-before_install:
-- curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-- dep ensure -v
-
 before_deploy:
 - zip -r "eventgen-${TRAVIS_TAG}.zip" dist/*
 

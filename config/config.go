@@ -3,9 +3,9 @@ package config
 import (
 	"encoding/json"
 	"log"
+	"os"
 
 	"github.com/spf13/viper"
-	"os"
 )
 
 var config Config
@@ -40,6 +40,7 @@ func loadFileConfig() {
 	}
 	config = Config{
 		Template:       viper.GetString("template"),
+		CSVSkipHeader:  viper.GetBool("csv_skip_header"),
 		Delimiter:      viper.GetString("delimiter"),
 		Duration:       parseDuration(viper.GetString("duration")),
 		NumberOfEvents: viper.GetInt("number_of_events"),

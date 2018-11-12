@@ -17,5 +17,5 @@ var versionCmd = &cobra.Command{
 }
 
 func printVersion() {
-	fmt.Println("Event Gen - v0.0.1")
+	fmt.Println("Secoura Event Generator - v0.4.5")
 }

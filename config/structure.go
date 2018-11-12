@@ -8,6 +8,7 @@ import (
 
 type Config struct {
 	Template       string        `json:"template"`
+	CSVSkipHeader  bool          `json:"csv_skip_header"`
 	Delimiter      string        `json:"delimiter"`
 	Duration       time.Duration `json:"duration"`
 	NumberOfEvents int           `json:"number_of_events"`

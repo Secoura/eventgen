@@ -31,6 +31,13 @@ func generateEvents() error {
 	}
 	template := strings.TrimSpace(string(data))
 
+	// If we are skipping CSV header, then only print first line once
+	if config.GetConfig().CSVSkipHeader {
+		lines := strings.SplitN(template, "\n", 2)
+		fmt.Printf("%s", lines[0])
+		template = lines[1]
+	}
+
 	delimiter := "\n"
 	if d := config.GetConfig().Delimiter; d != "" {
 		delimiter = d
